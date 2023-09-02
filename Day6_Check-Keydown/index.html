@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Check keydown</title>
+</head>
+
+<body>
+    <div class="notification">Click any key</div>
+    <div class="container hidden">
+        <div class="ascii-area">
+            Ascii
+            <span>-</span>
+        </div>
+        <div class="cards">
+            <div class="card card-key">
+                <p class="title">Key</p>
+                <p class="result">-</p>
+            </div>
+            <div class="card card-location">
+                <p class="title">Location</p>
+                <p class="result">-</p>
+            </div>
+            <div class="card card-which">
+                <p class="title">Which</p>
+                <p class="result">-</p>
+            </div>
+            <div class="card card-code">
+                <p class="title">Code</p>
+                <p class="result">-</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const $ = document.querySelector.bind(document);
+        const assciiResult = $(".ascii-area span");
+        const keyResult = $(".card-key .result");
+        const locationResult = $(".card-location .result");
+        const whichResult = $(".card-which .result");
+        const codeResult = $(".card-code .result");
+        document.body.addEventListener("keydown", function (e) {
+            $(".container").classList.remove("hidden");
+            this.removeChild($(".notification"));
+        }, { once: true });
+        document.body.addEventListener("keydown", function (e) {
+            assciiResult.textContent = e.key.charCodeAt();
+            keyResult.textContent = e.key;
+            locationResult.textContent = e.location;
+            whichResult.textContent = e.which;
+            codeResult.textContent = e.code;
+        })
+    </script>
+</body>
+
+</html>
