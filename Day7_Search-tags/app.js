@@ -1,5 +1,6 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
+let searchValues = [];
 window.addEventListener("load", eventHandler);
 
 function eventHandler(event) {
@@ -15,7 +16,10 @@ function eventHandler(event) {
                 `<div class="item">${this.value}
                 <span>x</span>
             </div>`;
-            $(".search-items").insertAdjacentHTML("beforeend", newItem);
+            if (!searchValues.includes(this.value)) {
+                $(".search-items").insertAdjacentHTML("beforeend", newItem);
+                searchValues.push(this.value);
+            }
             this.value = "";
         }
     });
@@ -23,7 +27,12 @@ function eventHandler(event) {
     $(".bx.remove").addEventListener("click", function (e) {
         if (confirm("Sure to remove all?")) {
             $(".search-items").innerHTML = "";
+            searchValues = [];
         }
     });
+
+    $(".search-btn").addEventListener("click", function (e) {
+        console.log(searchValues);
+    })
 
 }
