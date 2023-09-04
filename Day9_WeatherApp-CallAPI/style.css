@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    height: 100vh;
+}
+
+body.rainy,
+body.rainy .weather-card{
+    background: url(images/rainy.png) no-repeat center/cover;
+}
+
+body.warm,
+body.warm .weather-card{
+    background: url(images/warm.png) no-repeat center/cover;
+}
+
+body.cloudy,
+body.cloudy .weather-card{
+    background: url(images/cloudy.png) no-repeat center/cover;
+}
+
+body.cold,
+body.cold .weather-card{
+    background: url(images/winter.png) no-repeat center/cover;
+}
+
+.weather-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 1px black;
+}
+
+.weather-card{
+    width: 75%;
+    max-width: 350px;
+    height: 500px;
+    background: url(images/rainy.png) no-repeat center/cover;
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 1000;
+    box-shadow: 3px 4px 7px black;
+}
+
+.weather-card.hide *:not(.search, .location){
+    display: none;
+}
+
+.weather-card .search{
+    width: 100%;
+    padding: 10px;
+    border-radius: 0 10px 0 10px;
+    outline: none;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    transition: .2s;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.weather-card .search:focus,
+.weather-card .search:not(:placeholder-shown)
+{
+    background-color: white;
+    border-radius: 10px 0 10px 0;
+}
+
+.weather-card .location{
+    height: 100px;
+    margin-top: 40px;
+    font-size: 32px;
+    text-align: center;
+}
+
+.weather-card .time{
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.weather-card .temp{
+    width: 75%;
+    aspect-ratio: 2/1;
+    background-color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    border-radius: 10px;
+    box-shadow: black 3px 5px 3px;
+    margin-top: 20px;
+}
+
+.weather-card .weather{
+    font-size: 36px;
+    margin-top: 8px;
+}
+
+.weather-card .details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 30px;
+}
+
+.weather-card .details>*{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+}
+
+
+
+
+
+
+
