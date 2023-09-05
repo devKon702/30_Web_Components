@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+ul li{
+    list-style: none;
+}
+
+body{
+    height: 100vh;
+    background: linear-gradient(90deg, #20E3B2, #2c92ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-container{
+    width: 75%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    box-shadow: 4px 3px 8px black;
+    padding: 20px;
+}
+
+.todo-container input{
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+}
+
+.todo-container .todo-list{
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 15px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.todo-container .todo-list::-webkit-scrollbar{
+    width: 4px;
+    
+}
+
+.todo-container .todo-list::-webkit-scrollbar-track{
+    border: none;
+}
+
+.todo-container .todo-list::-webkit-scrollbar-thumb{
+    background: linear-gradient(0deg, #20E3B2, #2c92ff);
+    border-radius: 0 50px 50px 0;
+}
+
+
+.todo-container .todo-item{
+    background-color: rgba(255,255,255,0.6);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+    transition: .3s;
+}
+
+.todo-container .todo-item:hover{
+    background-color: white;
+}
+
+.todo-container .todo-item span{
+    cursor: pointer;
+    max-width: 85%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+}
+
+.fa-trash{
+    color: rgb(244, 54, 54);
+    cursor: pointer;
+}
+
+.fa-trash:hover{
+    scale: 1.03;
+}
+
+.done span{
+    transition: .5s;
+    text-decoration: line-through;
+    color: #ccc;
+}
+
+.deleted{
+    cursor: none;
+    transform: translateX(130%);
+}
+
+.todo-footer{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+button.save{
+    width: 50%;
+    background: linear-gradient(90deg, #20E3B2, #2c92ff);
+    padding: 10px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    transition: .2s;
+}
+
+button.save:hover{
+    scale: 1.05;
+}
+
+
+
+
+
+
