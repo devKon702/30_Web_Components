@@ -1,0 +1,144 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    --success: #20e37b;
+    --warn: rgb(255,191,0);
+    --error: rgb(243,38,38);
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-family: sans-serif;
+}
+
+button{
+    width: 150px;
+    border-radius: 20px;
+    padding: 10px 20px;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.success{
+    background-color: var(--success);
+}
+
+.warning{
+    background-color: var(--warn);
+}
+
+.error{
+    background-color: var(--error);
+}
+
+.notify-container{
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 20px 20px 0 0;
+}
+
+.notify-container .item{
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    padding-left: 0;
+    color: black;
+    font-weight: 600;
+    border-radius: 5px;
+    animation: show 1.5s ease, hide 1.5s forwards 3.5s;
+    position: relative;
+}
+
+@keyframes show{
+    0%{
+        transform: translateX(150%);
+    }
+    50%{
+        transform: translateX(-10px);
+    }
+    80%{
+        transform: translateX(20px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+@keyframes hide {
+    0%{
+        transform: translateX(0);
+    }
+    30%{
+        transform: translateX(-20px);
+    }
+    100%{
+        transform: translateX(150%);
+    }
+
+}
+
+.notify-container .item::after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 5px;
+    animation: timing 2s forwards 1.5s;
+}
+.notify-container .item.success::after{
+    background-color: var(--success);
+}
+
+.notify-container .item.error::after{
+    background-color: var(--error);
+}
+.notify-container .item.warning::after{
+    background-color: var(--warn);
+}
+@keyframes timing {
+    0%{
+        width: 100%;
+    }
+    100%{
+        width: 0;
+    };
+}
+
+/* .notify-container .item.out{
+    animation: hide 1.5s forwards ;
+} */
+
+
+
+.notify-container .item i{
+    color: white;
+    transform: translateX(-34px);
+}
+
+.notify-container .item.success{
+    border-left: 50px var(--success) solid;
+}
+
+.notify-container .item.error{
+    border-left: 50px var(--error) solid;
+}
+
+.notify-container .item.warning{
+    border-left: 50px var(--warn) solid;
+}
+
+
+
