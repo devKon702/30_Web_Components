@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+section {
+    height: 100vh;
+    overflow: hidden;
+}
+
+section.part1 {
+    background: linear-gradient(90deg, #20E3B2 0%, #0ee971 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.part1 .content .title {
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+}
+
+.part1 .content .title span {
+    color: #20E3B2;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.part1 .content .desc {
+    width: 500px;
+    margin-top: 20px;
+    font-size: 24px;
+    text-align: justify;
+}
+
+.part1 .content {
+    transition: 1s;
+    transform: translateX(-150%);
+}
+
+.part1.appear .content {
+    transform: translateX(0);
+}
+
+.part2 {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.part2 .card {
+    color: white;
+    width: 400px;
+    height: 100px;
+    background-color: #181818;
+    border-radius: 15px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform ease 1s;
+}
+
+.part2 .card:first-child {
+    transform: translateX(-800px);
+}
+
+.part2 .card:last-child {
+    transform: translateX(800px);
+}
+
+.part2.appear .card {
+    transform: translateX(0);
+}
+
+.part3 {
+    background: linear-gradient(180deg, #20E3B2 50%, white 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.part3 .card {
+    width: 150px;
+    height: 150px;
+    box-shadow: 2px 2px 5px 0 black;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    scale: 0;
+    transition: 1s;
+}
+
+.part3 .card .title {
+    color: #20E3B2;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.part3.appear>.card {
+    scale: 1;
+}
