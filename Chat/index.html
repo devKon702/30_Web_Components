@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .btn-toggleChatBox {
+            height: 50px;
+            width: 50px;
+            background-color: #FFD333;
+            border-radius: 50%;
+            border: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .chat-box {
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            position: fixed;
+            bottom: 20px;
+            right: 100px;
+        }
+
+        .chat-box.show {
+            animation: show .5s forwards;
+        }
+
+        .chat-box.hide {
+            animation: hide .5s forwards;
+        }
+
+        .chat-box .card-body::-webkit-scrollbar {
+            width: 2px;
+        }
+
+        .chat-box .card-body::-webkit-scrollbar-thumb {
+            border-radius: 15px;
+            background-color: #FFD333;
+        }
+
+        @keyframes show {
+            0% {
+                height: 0;
+                width: 0;
+            }
+
+            100% {
+                height: auto;
+                width: 1000px;
+            }
+        }
+
+        @keyframes hide {
+            0% {
+                height: auto;
+                width: 1000px;
+            }
+
+            100% {
+                height: 0;
+                width: 0;
+            }
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="btn-toggleChatBox position-fixed z-1">
+        <i class="fa-solid fa-toolbox"></i>
+    </button>
+
+    <div class="row d-flex justify-content-end chat-box">
+        <div class="col-md-8 col-lg-6 col-xl-6">
+
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center p-3"
+                    style="border-top: 4px solid #FFD333;">
+                    <h5 class="mb-0">Chat with AI</h5>
+                    <div class="d-flex flex-row align-items-center">
+                        <i class="fas fa-minus me-3 text-muted fa-xs"></i>
+                        <i class="fas fa-times text-muted fa-xs" style="cursor: pointer;"></i>
+                    </div>
+                </div>
+                <div class="card-body" data-mdb-perfect-scrollbar="true"
+                    style="position: relative; height: 400px; overflow-y: scroll;">
+
+                    <div class="d-flex justify-content-between">
+                        <p class="small mb-1">AI</p>
+                        <p class="small mb-1 text-muted"></p>
+                    </div>
+                    <div class="d-flex flex-row justify-content-start">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp"
+                            alt="avatar 1" style="width: 45px; height: 100%;">
+                        <div>
+                            <p class="small p-2 ms-3 mb-3 rounded-3" style="background-color: #f5f6f7;">Hello!
+                                How can I help you?</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+                    <div class="input-group mb-0">
+                        <input type="text" class="form-control" id="message-input" placeholder="Type message"
+                            aria-label="Recipient's username" aria-describedby="button-addon2" />
+                        <button class="btn btn-warning" type="button" id="button-addon2" style="padding-top: .55rem;">
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script>
+        function getHTMLTemplateMessage(site, obj) {
+            if (site === "ai") {
+                const now = new Date();
+
+
+                return `<div class="d-flex justify-content-between">
+                                <p class="small mb-1">${obj.name}</p>
+                                <p class="small mb-1 text-muted">${now.getHours()}:${now.getMinutes()}</p>
+                            </div>
+                            <div class="d-flex flex-row justify-content-start">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp"
+                                    alt="avatar 1" style="width: 45px; height: 100%;">
+                                <div>
+                                    <p class="small p-2 ms-3 mb-3 rounded-3" style="background-color: #f5f6f7;">${obj.message}</p>
+                                </div>
+                            </div>`
+            } else if (site === "user") {
+                return `<div class="d-flex justify-content-between">
+                                <p class="small mb-1 text-muted"></p>
+                                <p class="small mb-1">${obj.name}</p>
+                            </div>
+                            <div class="d-flex flex-row justify-content-end mb-4 pt-1">
+                                <div>
+                                    <p class="small p-2 me-3 mb-3 text-white rounded-3" style="background-color: #FFD333;">${obj.message}</p>
+                                </div>
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                                    alt="avatar 1" style="width: 45px; height: 100%;">
+                            </div>`
+            }
+        }
+        document.querySelector("#button-addon2").addEventListener("click", function () {
+            addNewMessage()
+        })
+        document.querySelector("input").addEventListener("keydown", function (e) {
+            if (e.key == "Enter") {
+                addNewMessage();
+            }
+        })
+        function addNewMessage() {
+            const input = document.getElementById("message-input");
+            const value = input.value;
+            if (value) {
+                document.querySelector(".card-body").insertAdjacentHTML("beforeend", getHTMLTemplateMessage("user", { name: "Johny Bullock", message: value }));
+                document.querySelector(".card-body").scroll(0, 10000);
+                input.value = "";
+                setTimeout(function () {
+                    document.querySelector(".card-body").insertAdjacentHTML("beforeend", getHTMLTemplateMessage("ai", { name: "AI", message: "Please wait ... " }));
+                    document.querySelector(".card-body").scroll(0, 10000);
+                }, 1000)
+            }
+        }
+        document.querySelector(".btn-toggleChatBox").onclick = function () {
+            const chatBox = document.querySelector(".chat-box");
+            chatBox.classList.toggle("show");
+            chatBox.classList.toggle("hide", !chatBox.classList.contains("show"));
+        }
+        document.querySelector(".card-header .fa-times").addEventListener("click", () => {
+            document.querySelector(".chat-box").classList.replace("show", "hide");
+        })
+    </script>
+</body>
+
+</html>

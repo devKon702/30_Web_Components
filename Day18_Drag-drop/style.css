@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-container {
+    width: 300px;
+    min-height: 200px;
+    border: 4px dashed #ccc;
+}
+
+.file-container.active {
+    border-color: #2cccff;
+}
+
+.file-container .file-control {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 24px;
+}
+
+.file-control label {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.file-container .image-review {
+    width: 150px;
+    height: 150px;
+    margin: 10px auto;
+}
+
+.file-container .image-review img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.card-list .card {
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
+}
+
+.card-list .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
